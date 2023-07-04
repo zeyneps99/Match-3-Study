@@ -14,14 +14,16 @@ public class GameManager : Singleton<GameManager>
     private Canvas _canvas;
 
 
+   
+
     private void Start()
     {
         DontDestroyOnLoad(gameObject);
-        Init();
+        StartGame();
     }
 
 
-    private void Init()
+    private void StartGame()
     {
         _canvas = FindObjectOfType<Canvas>();
         var level = LoadLevelData();
@@ -35,14 +37,9 @@ public class GameManager : Singleton<GameManager>
         var board = Resources.Load<GameObject>(_prefabPath + _boardPath);
         if (board != null && canvas != null)
         {
-            //if (_currentBoard != null)
-            //{
-            //    Destroy(_currentBoard);
-            //}
             var newBoard = Instantiate(board, canvas.transform);
-            newBoard.GetComponent<Board>()?.Init(level);
-            //_currentBoard = board.GetComponent<Board>();
-            //_currentBoard.Init(level);
+            newBoard.GetComponent<Board>()?.Set(level);
+            Events.CoreEvents.OnGameStarted?.Invoke();
         }
     }
 
