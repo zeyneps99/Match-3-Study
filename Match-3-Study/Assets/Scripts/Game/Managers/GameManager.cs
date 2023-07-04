@@ -27,12 +27,12 @@ public class GameManager : Singleton<GameManager>
     {
         _canvas = FindObjectOfType<Canvas>();
         var level = LoadLevelData();
-        LoadGame(level, _canvas);
+        LoadLevel(level, _canvas);
     }
 
 
 
-    private void LoadGame(Level level, Canvas canvas)
+    private void LoadLevel(Level level, Canvas canvas)
     {
         var board = Resources.Load<GameObject>(_prefabPath + _boardPath);
         if (board != null && canvas != null)

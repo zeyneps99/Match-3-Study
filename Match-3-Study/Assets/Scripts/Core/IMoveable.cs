@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IEntity
+public interface IMoveable 
 {
-    public GameObject gameObject { get; }
+    public abstract void Move();
+   
 }

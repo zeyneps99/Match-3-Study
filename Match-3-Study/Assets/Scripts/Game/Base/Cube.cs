@@ -3,27 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Cube : MonoBehaviour
+public class Cube : GameEntity
 {
     public CubeTypes Type;
-    public Image Image;
-    private Vector2Int _gridPos;
 
-    private const string _cubePath = "Sprites/Cubes/cube_";
-    public void Init(CubeTypes type)
-    {
-        this.Type = type;
-        SetSprite(type);
-    }
 
-    private void SetSprite(CubeTypes type)
+    private const string _spritePath = "Sprites/Cubes/";
+    private const string _spritePrefix = "cube_";
+    private Image _image;
+    public void SetType(CubeTypes type)
     {
-        Sprite sprite = Resources.Load<Sprite>(_cubePath + (int) type);
-        if (sprite != null && Image != null)
+        Type = type;
+        _image = GetComponent<Image>();
+        var sprite = Resources.Load<Sprite>(_spritePath + _spritePrefix + (int)type);
+        if (sprite != null && _image != null)
         {
-            Image.sprite = sprite;
+            _image.sprite = sprite;
         }
+
     }
 
+    
 
 }

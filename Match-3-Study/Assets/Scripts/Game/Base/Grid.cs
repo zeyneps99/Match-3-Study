@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IEntity
+public class Grid : Entity
 {
-    public GameObject gameObject { get; }
+    public Vector2 Position;
+
 }
