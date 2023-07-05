@@ -13,7 +13,6 @@ public class GameManager : Singleton<GameManager>
 
     private Canvas _canvas;
 
-
    
 
     private void Start()

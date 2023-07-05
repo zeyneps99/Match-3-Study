@@ -7,6 +7,12 @@ public enum CubeTypes
     None = 0,
     Yellow = 1,
     Red = 2,
-    Green = 3,
-    Purple = 4,
+    Blue = 3,
+    Green = 4,
+    Purple = 5,
+    Balloon = 6,
+    Duck = 7,
+    LeftRocket = 9,
+    RightRocket = 10
 }
+

@@ -3,26 +3,32 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Cube : GameEntity
+public class Cube : Item, IMoveable
 {
+
     public CubeTypes Type;
 
 
     private const string _spritePath = "Sprites/Cubes/";
     private const string _spritePrefix = "cube_";
-    private Image _image;
+    private Image Image;
+    
+
     public void SetType(CubeTypes type)
     {
         Type = type;
-        _image = GetComponent<Image>();
+        Image = GetComponent<Image>();
         var sprite = Resources.Load<Sprite>(_spritePath + _spritePrefix + (int)type);
-        if (sprite != null && _image != null)
+        if (sprite != null && Image != null)
         {
-            _image.sprite = sprite;
+            Image.sprite = sprite;
         }
-
     }
 
-    
+    public void Move()
+    {
+        throw new System.NotImplementedException();
+    }
+
 
 }

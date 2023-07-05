@@ -4,6 +4,6 @@ using UnityEngine;
 
 public class Grid : Entity
 {
-    public Vector2 Position;
+    public Vector2Int Position;
 
 }

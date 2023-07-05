@@ -5,10 +5,17 @@ using UnityEngine;
 public class ObjectPool<T> : MonoBehaviour where T : MonoBehaviour
 {
     [SerializeField] private GameObject _objectPrefab;
-    private Queue<GameObject> _pool = new Queue<GameObject>();
+    private Queue<T> _pool = new Queue<T>();
     public const int _amount = 10;
 
-    public GameObject Get()
+    public void CreateInstance(GameObject go)
+    {
+        if (go != null && go.TryGetComponent<T>(out var comp))
+        {
+            _objectPrefab = go;
+        }
+    }
+    public T Get()
     {
         if (_pool.Count == 0)
         {
@@ -17,10 +24,10 @@ public class ObjectPool<T> : MonoBehaviour where T : MonoBehaviour
         return _pool.Dequeue();
     }
 
-    public void Put(GameObject go)
+    public void Put(T obj)
     {
-        go.SetActive(false);
-        _pool.Enqueue(go);
+        obj.gameObject.SetActive(false);
+        _pool.Enqueue(obj);
         
     }
 
@@ -30,7 +37,7 @@ public class ObjectPool<T> : MonoBehaviour where T : MonoBehaviour
         {
             GameObject go = Instantiate(_objectPrefab);
             go.SetActive(true);
-            _pool.Enqueue(go);
+            _pool.Enqueue(go.GetComponent<T>());
         }
     }
 }

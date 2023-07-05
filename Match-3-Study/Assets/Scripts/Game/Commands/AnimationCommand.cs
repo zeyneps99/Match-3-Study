@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AnimationCommand : Command
 {
-    private GameEntity gameEntity;
+    private Entity entity;
     public AnimationCommand(IEntity entity) : base(entity)
     {
         
