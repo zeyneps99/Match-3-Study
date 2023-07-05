@@ -7,9 +7,9 @@ public static partial class Events
 {
     public static class CoreEvents
     {
-        public static Action OnGameStarted;
-        public static Action OnGameEnded;
+        public static Action<Level> OnLevelLoaded;
     }
+
 
     public static class GameEvents
     {

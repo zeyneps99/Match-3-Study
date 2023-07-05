@@ -12,9 +12,10 @@ public class Board : MonoBehaviour
     [SerializeField] private GameObject _cubePrefab;
     [SerializeField] private RectTransform _grid;
     [SerializeField] private Transform _cubeContainer;
-    
-
     private ObjectPool<Cube> _cubePool = new ObjectPool<Cube>();
+
+
+    public Level Level;
 
     public void Set(Level level)
     {
@@ -82,4 +83,7 @@ public class Board : MonoBehaviour
 
         }
     }
+
+    
+
 }
