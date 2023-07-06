@@ -8,6 +8,7 @@ public static partial class Events
     public static class CoreEvents
     {
         public static Action<Level> OnLevelLoaded;
+        public static Action<Command> OnCommand;
     }
 
 
