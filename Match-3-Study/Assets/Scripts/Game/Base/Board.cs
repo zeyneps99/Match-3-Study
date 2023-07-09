@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Board : MonoBehaviour
+public class Board : Entity
 {
 
     private float _cubeWidth;
@@ -61,8 +61,6 @@ public class Board : MonoBehaviour
         }
     }
 
-
-
     private void SetGridLayout(Transform container)
     {
         if (container.TryGetComponent<GridLayoutGroup>(out var layout))
@@ -74,6 +72,14 @@ public class Board : MonoBehaviour
                 _cubeWidth = cubeRT.rect.width;
                 layout.cellSize = Vector2.one * _cubeWidth;
             }
+        }
+    }
+
+    public void Enable(bool isEnable)
+    {
+        foreach (Cube cube in Cubes)
+        {
+            cube.Enable(isEnable);
         }
     }
 

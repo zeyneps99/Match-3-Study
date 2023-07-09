@@ -18,10 +18,15 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
                 {
                     if (instance == null)
                     {
-                        GameObject go = new GameObject();
-                        instance = go.AddComponent<T>();
-                        go.name = typeof(T).Name;
-                        DontDestroyOnLoad(instance.gameObject);
+                        instance = FindObjectOfType<T>();
+                        if (instance == null)
+                        {
+                            GameObject go = new GameObject();
+                            instance = go.AddComponent<T>();
+                            go.name = typeof(T).Name;
+                            DontDestroyOnLoad(instance.gameObject);
+                        }
+                      
                     }
                 }
             }

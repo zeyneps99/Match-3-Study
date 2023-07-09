@@ -8,15 +8,14 @@ public class GameLogic : Singleton<GameLogic>
     #region Helpers
     private MatchHelper _matchHelper;
     private LevelHelper _levelHelper;
-    #endregion
 
-    private Board _board;
+    #endregion
 
     public void StartGame()
     {
         Init();
-        _board = _levelHelper?.LoadLevel();
-        _matchHelper?.SetBoard(_board);
+        var board = _levelHelper?.GenerateBoardForLevel();
+        _matchHelper?.SetBoard(board);
     }
 
     
@@ -40,7 +39,10 @@ public class GameLogic : Singleton<GameLogic>
         _matchHelper = go.AddComponent<MatchHelper>();
     }
 
-    
+    public void EnableBoard(bool isEnabled)
+    {
+        _levelHelper?.EnableBoard(isEnabled);
+    }
 
 
 }

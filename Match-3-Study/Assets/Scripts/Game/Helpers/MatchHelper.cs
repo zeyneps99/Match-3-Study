@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class MatchHelper : MonoBehaviour
 {
-    private Cube _selectedCube;
     private List<Cube> _matchList;
     private bool[,] _visited;
     private Board _board;
@@ -50,10 +49,15 @@ public class MatchHelper : MonoBehaviour
 
     private void PerformMatch()
     {
-       foreach(var cube in _matchList)
+        MatchCommand matchCommand = new MatchCommand(_board);
+        if (_board.TryGetComponent(out Commander commander))
         {
-            Debug.Log(cube.name + " matched");
+            Debug.Log("match found");
+            commander.ExecuteCommand(matchCommand);
         }
+        Events.GameEvents.OnMatchFound?.Invoke();
+        //  _board.HandleMatch(_matchList);
+
     }
 }
 

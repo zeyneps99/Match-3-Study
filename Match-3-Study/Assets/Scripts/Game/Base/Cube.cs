@@ -32,9 +32,23 @@ public class Cube : Item, IMatchable
 
     public void Match()
     {
-        throw new System.NotImplementedException();
+       // Position = Vector2Int.down;
+
+        //Animate();
     }
 
+    public void Enable(bool isEnable)
+    {
+        if(TryGetComponent(out EventTrigger eventTrigger))
+        {
+            eventTrigger.enabled = isEnable;
+        }
+
+        //if (TryGetComponent(out LayoutElement layoutElement))
+        //{
+        //    layoutElement.ignoreLayout = !isEnable;
+        //}
+    }
 
 
 }
