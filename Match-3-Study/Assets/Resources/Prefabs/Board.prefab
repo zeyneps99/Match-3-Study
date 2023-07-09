@@ -149,6 +149,7 @@ GameObject:
   - component: {fileID: 376044627995666231}
   - component: {fileID: 376044627995666230}
   - component: {fileID: 5213535446145808061}
+  - component: {fileID: 3912577256930984108}
   m_Layer: 5
   m_Name: Board
   m_TagString: Untagged
@@ -228,8 +229,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30dc5e0734726d0418d443523c129071, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cubePrefab: {fileID: 6828458774970434093, guid: fbd102854c1e8b049af9de9bc370f05d, type: 3}
+  _genericCubePrefab: {fileID: 6828458774970434093, guid: fbd102854c1e8b049af9de9bc370f05d, type: 3}
   _grid: {fileID: 1980760275}
   _cubeContainer: {fileID: 5587473720332689039}
   Width: 0
   Height: 0
+--- !u!114 &3912577256930984108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 376044627995666228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d95727a7c83ec34ead3a43a36db82ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

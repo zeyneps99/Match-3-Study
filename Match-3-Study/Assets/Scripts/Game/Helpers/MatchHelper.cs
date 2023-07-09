@@ -49,12 +49,8 @@ public class MatchHelper : MonoBehaviour
 
     private void PerformMatch()
     {
-        MatchCommand matchCommand = new MatchCommand(_board);
-        if (_board.TryGetComponent(out Commander commander))
-        {
-            Debug.Log("match found");
-            commander.ExecuteCommand(matchCommand);
-        }
+        GameManager.Instance?.DeactivateBoard();
+        _board.HandleMatch(_matchList);
         Events.GameEvents.OnMatchFound?.Invoke();
         //  _board.HandleMatch(_matchList);
 

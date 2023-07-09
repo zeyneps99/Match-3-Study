@@ -8,11 +8,9 @@ public class Board : Entity
 {
 
     private float _cubeWidth;
-    [SerializeField] private GameObject _cubePrefab;
+    [SerializeField] private GameObject _genericCubePrefab;
     [SerializeField] private RectTransform _grid;
     [SerializeField] private Transform _cubeContainer;
-    private ObjectPool<Cube> _cubePool = new ObjectPool<Cube>();
-
 
     public Level Level;
     public int Width, Height;
@@ -23,6 +21,8 @@ public class Board : Entity
         Width = level.Width;
         Height = level.Height;
         Cubes = new Cube[Width, Height];
+        PoolManager.Instance?.CreatePoolInstance(_genericCubePrefab);
+
         GenerateCubes();
         GenerateGrid();
     }
@@ -46,13 +46,11 @@ public class Board : Entity
         {
             for (int j = 0; j < Height; j++)
             {
-
-                _cubePool.CreateInstance(_cubePrefab);
-                Cube newCube = _cubePool.Get();
+                var type = (CubeTypes)UnityEngine.Random.Range(1, 6);
+                GenericCube newCube = (GenericCube) PoolManager.Instance.GetPooledObject(type);
                 newCube.name = "Cube - " + i + " , " + j;
                 newCube.transform.SetParent(_cubeContainer);
                 newCube.transform.localScale = Vector2.one;
-                var type = (CubeTypes)UnityEngine.Random.Range(1, 6);
                 newCube.SetType(type);
                 newCube.Position = new Vector2Int(i, j);
                 Cubes[i, j] = newCube;
@@ -67,7 +65,7 @@ public class Board : Entity
         {
             layout.constraint = GridLayoutGroup.Constraint.FixedColumnCount;
             layout.constraintCount = Width;
-            if (_cubePrefab.TryGetComponent<RectTransform>(out var cubeRT))
+            if (_genericCubePrefab.TryGetComponent<RectTransform>(out var cubeRT))
             {
                 _cubeWidth = cubeRT.rect.width;
                 layout.cellSize = Vector2.one * _cubeWidth;
@@ -83,6 +81,12 @@ public class Board : Entity
         }
     }
 
-
+    public void HandleMatch(List<Cube> matchList)
+    {
+        foreach(Cube matchedCube in matchList)
+        {
+            PoolManager.Instance.ReturnToPool(matchedCube);
+        }
+    }
 
 }

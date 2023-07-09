@@ -4,6 +4,8 @@ using UnityEngine;
 
 public interface IAnimatable 
 {
-    public abstract void Animate();
-    
+    public abstract void BlastAnimation();
+    public abstract void DropAnimation();
+    public abstract void FallAnimation();
+
 }
