@@ -1,4 +1,4 @@
-public class GameState : IGameState
+public class InGameState : IGameState
 {
  
     public void Enter()
@@ -10,6 +10,7 @@ public class GameState : IGameState
 
     public void Update()
     {
+
         // Update game logic, handle player input, check for matches
     }
 
@@ -17,4 +18,6 @@ public class GameState : IGameState
     {
         // Clean up resources, save game progress if necessary
     }
+
+    
 }

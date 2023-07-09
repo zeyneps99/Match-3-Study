@@ -9,11 +9,12 @@ public abstract class Command
     public abstract void Execute();
     public abstract void Undo();
 
-
     public Command (IEntity entity)
     {
         _entity = entity;
     }
 
-    
+   
+
+
 }

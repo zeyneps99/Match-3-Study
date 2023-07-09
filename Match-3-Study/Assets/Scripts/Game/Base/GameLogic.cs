@@ -5,42 +5,42 @@ using UnityEngine;
 
 public class GameLogic : Singleton<GameLogic>
 {
-    #region PATHS
-    private string _levelDataPath = "LevelData";
-    private string _prefabPath = "Prefabs/";
-    private string _boardPath = "Board";
+    #region Helpers
+    private MatchHelper _matchHelper;
+    private LevelHelper _levelHelper;
     #endregion
 
-    private Canvas _canvas;
+    private Board _board;
 
     public void StartGame()
     {
-        _canvas = FindObjectOfType<Canvas>();
-        var level = LoadLevelData();
-        LoadLevel(level, _canvas);
+        Init();
+        _board = _levelHelper?.LoadLevel();
+        _matchHelper?.SetBoard(_board);
     }
 
-    public void LoadLevel(Level level, Canvas canvas)
+    
+    public void Init()
     {
-        var board = Resources.Load<GameObject>(_prefabPath + _boardPath);
-        if (board != null && canvas != null)
-        {
-            var newBoard = Instantiate(board, canvas.transform);
-            newBoard.GetComponent<Board>()?.Set(level);
-           // Events.CoreEvents.OnLevelLoaded?.Invoke(level);
-        }
+        CreateHelpers();
+        _levelHelper?.Init();
+        _matchHelper?.Init();
     }
 
-    public Level LoadLevelData()
+    public void CheckForMatches(Cube cube)
     {
-        var levelData = Resources.Load<TextAsset>(_levelDataPath);
-        if (levelData == null)
-        {
-            return new Level();
-        }
-        return JsonConvert.DeserializeObject<Level>(levelData.text);
-
+        _matchHelper?.CheckForMatches(cube);
     }
+
+    private void CreateHelpers()
+    {
+        GameObject go = new GameObject();
+        go.name = "Helpers";
+        _levelHelper = go.AddComponent<LevelHelper>();
+        _matchHelper = go.AddComponent<MatchHelper>();
+    }
+
+    
 
 
 }

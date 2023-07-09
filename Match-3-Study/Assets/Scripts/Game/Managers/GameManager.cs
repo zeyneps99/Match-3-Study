@@ -5,10 +5,8 @@ public class GameManager : Singleton<GameManager>
     private GameStateManager _stateManager;
     private void Start()
     {
-        DontDestroyOnLoad(gameObject);
         _stateManager = new GameStateManager();
-        _stateManager.SwitchState(new GameState());
-
+        _stateManager.SwitchState(new InGameState());
         _isGameRunning = true;
 
         //while (_isGameRunning)

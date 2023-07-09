@@ -132,11 +132,11 @@ MonoBehaviour:
     m_Bottom: 0
   m_ChildAlignment: 4
   m_StartCorner: 0
-  m_StartAxis: 0
+  m_StartAxis: 1
   m_CellSize: {x: 100, y: 100}
   m_Spacing: {x: 0, y: 0}
-  m_Constraint: 2
-  m_ConstraintCount: 4
+  m_Constraint: 1
+  m_ConstraintCount: 5
 --- !u!1 &376044627995666228
 GameObject:
   m_ObjectHideFlags: 0
@@ -231,3 +231,5 @@ MonoBehaviour:
   _cubePrefab: {fileID: 6828458774970434093, guid: fbd102854c1e8b049af9de9bc370f05d, type: 3}
   _grid: {fileID: 1980760275}
   _cubeContainer: {fileID: 5587473720332689039}
+  Width: 0
+  Height: 0
