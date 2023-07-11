@@ -8,6 +8,7 @@ public class GenericCube : Cube
     private Image Image;
     private const string _spritePath = "Sprites/Cubes/";
     private const string _spritePrefix = "cube_";
+    private Color _color;
     public void SetType(CubeTypes type)
     {
         Type = type;
@@ -18,4 +19,21 @@ public class GenericCube : Cube
             Image.sprite = sprite;
         }
     }
+
+    private void SetParticleColor(ParticleSystem particleSystem)
+    {
+        if (particleSystem != null)
+        {
+            //todo
+        }
+    }
+
+    public override void BlastAnimation()
+    {
+
+        SetParticleColor(BlastParticles);
+        base.BlastAnimation();
+    }
+
+
 }

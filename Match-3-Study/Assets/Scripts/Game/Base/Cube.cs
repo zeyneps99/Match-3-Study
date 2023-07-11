@@ -13,11 +13,9 @@ public class Cube : Entity, IMatchable, IAnimatable
     public Vector2Int Position;
 
 
-    [SerializeField] ParticleSystem BlastParticles;
-    [SerializeField] ParticleSystem DropParticles;
-   
-
-    
+    public ParticleSystem BlastParticles;
+    public ParticleSystem DropParticles;
+  
 
     public virtual void Match()
     {

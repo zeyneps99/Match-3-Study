@@ -169,5 +169,5 @@ MonoBehaviour:
   Type: 0
   IsVisited: 0
   Position: {x: 0, y: 0}
-  BlastParticles: {fileID: 0}
+  BlastParticles: {fileID: 1542200773077271560, guid: 16017dccc212e644684b499bead938f7, type: 3}
   DropParticles: {fileID: 0}

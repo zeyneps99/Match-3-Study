@@ -85,6 +85,7 @@ public class Board : Entity
     {
         foreach(Cube matchedCube in matchList)
         {
+            matchedCube.Match();
             PoolManager.Instance.ReturnToPool(matchedCube);
         }
     }

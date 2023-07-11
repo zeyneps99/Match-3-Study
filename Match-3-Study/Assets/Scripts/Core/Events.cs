@@ -9,8 +9,6 @@ public static partial class Events
     {
         public static Action<Command> OnCommand;
     }
-
-
     public static class GameEvents
     {
         public static Action OnBoardGenerated;
